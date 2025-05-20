@@ -12,6 +12,12 @@ public class Block extends Actor
      * Act - do whatever the block wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public Block(){
+        GreenfootImage img = new GreenfootImage("ironblock.png");
+        img.scale(20, 20);
+        setImage(img);
+    }
+    
     int speed = 1;
     public void act()
     {
