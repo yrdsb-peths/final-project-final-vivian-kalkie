@@ -8,10 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Block extends Actor
 {
-    /**
-     * Act - do whatever the block wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    //resizing the block.
     public Block(){
         GreenfootImage img = new GreenfootImage("ironblock.png");
         img.scale(20, 20);
