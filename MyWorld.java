@@ -16,6 +16,7 @@ public class MyWorld extends World {
         //scoreLabel = new Label(0, 80);
         //addObject(scoreLabel, 40, 40);
     
+        //spawn random blocks of rows. 
         for(int i = 0; i < Greenfoot.getRandomNumber(15); i++)
         {
             createBlock();
@@ -24,11 +25,17 @@ public class MyWorld extends World {
     
     public void createBlock()
     {
-        Block block = new Block();
-        int x = 1300;
-        int y = Greenfoot.getRandomNumber(600);
-        addObject(block, x, y);
-        //main (was creating an error, so turned to comment)
+        //to make the blocks into a row.
+        int spacing = 20;
+        int yPos = Greenfoot.getRandomNumber(600);
+        int xInt = 500;
+        
+        for(int i = 0; i < 20; i++)
+        {
+            int xPos = xInt + i * spacing;
+            Block block = new Block();
+            addObject(block, xPos, yPos);
+        }
     }
     
     /**
