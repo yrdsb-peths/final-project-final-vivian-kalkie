@@ -12,16 +12,24 @@ public class Scubadiver extends Actor
         if(Greenfoot.isKeyDown("down"))
         {
             bubblepopSound.play();
-            int x = getX();
-            int y = getY() + speed;
-            setLocation(x, y);
+            turn(-90);
+            move(-100);
+            if(isTouching(Block.class))
+            {
+                setLocation(getX(), getY());
+                turn(90);
+            }
         }
         else if(Greenfoot.isKeyDown("up"))
         {
             bubblepopSound.play();
-            int x = getX();
-            int y = getY() - speed;
-            setLocation(x, y);
+            turn(90);
+            move(-100);
+            if(isTouching(Block.class))
+            {
+                setLocation(getX(), getY());
+                turn(-90);
+            }
         }
     }
     
