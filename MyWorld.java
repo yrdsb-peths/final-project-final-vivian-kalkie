@@ -1,12 +1,20 @@
 import greenfoot.*;
 
 public class MyWorld extends World {
+    public int score = 0;
+    //Label scoreLabel;
+    int level = 1;
+    
     public MyWorld() {
         super(1300, 600, 1);
         
         // Create the scubadiver object 
         Scubadiver scubadiver = new Scubadiver();
         addObject(scubadiver, 300, 250);
+        
+        // Create a label 
+        //scoreLabel = new Label(0, 80);
+        //addObject(scoreLabel, 40, 40);
     
         for(int i = 0; i < Greenfoot.getRandomNumber(15); i++)
         {
@@ -20,6 +28,29 @@ public class MyWorld extends World {
         int x = 1300;
         int y = Greenfoot.getRandomNumber(600);
         addObject(block, x, y);
-//main 
+        //main (was creating an error, so turned to comment)
     }
+    
+    /**
+     * Increase score
+     */
+    //public void increaseScore()
+    {
+        //score++;
+        //scoreLabel.setValue(score);
+         
+        //if(score % 5 == 0)
+        //{
+            //level += 1;
+        //}
+    }
+    
+    /**
+     * End the game and draw game over
+     */
+    //public void gameOver()
+    //{
+        //Label gameOverLabel = new Label("Game Over", 100);
+        //addObject(gameOverLabel, getWidth()/2, 200);
+    //}
 }
