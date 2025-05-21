@@ -4,17 +4,22 @@ public class Scubadiver extends Actor
 {
     GreenfootSound bubblepopSound = new GreenfootSound("bubblepop.mp3");
     
+    int speed = 100;
     public void act()
     {
         if(Greenfoot.isKeyDown("down"))
         {
-            move(-1);
             bubblepopSound.play();
+            int x = getX();
+            int y = getY() + speed;
+            setLocation(x, y);
         }
         else if(Greenfoot.isKeyDown("up"))
         {
-            move(1);
             bubblepopSound.play();
+            int x = getX();
+            int y = getY() - speed;
+            setLocation(x, y);
         }
     }
     

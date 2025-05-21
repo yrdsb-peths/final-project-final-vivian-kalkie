@@ -17,6 +17,7 @@ public class MyWorld extends World {
         //addObject(scoreLabel, 40, 40);
     
         //spawn random blocks of rows. 
+
         for(int i = 0; i < Greenfoot.getRandomNumber(15); i++)
         {
             createBlock();
@@ -28,7 +29,7 @@ public class MyWorld extends World {
         //to make the blocks into a row.
         int spacing = 20;
         int yPos = Greenfoot.getRandomNumber(600);
-        int xInt = 500;
+        int xInt = 10;
         
         for(int i = 0; i < 20; i++)
         {
