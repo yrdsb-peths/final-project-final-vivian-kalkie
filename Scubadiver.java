@@ -3,8 +3,8 @@ import greenfoot.*;
 public class Scubadiver extends Actor
 {
     GreenfootSound bubblepopSound = new GreenfootSound("bubblepop.mp3");
-    //GreenfootImage up = new GreenfootImage();
-    //GreenfootImage down = new GreenfootImage();
+    //GreenfootImage up = new GreenfootImage(images/);
+    //GreenfootImage down = new GreenfootImage("images/);
     public void act()
     {
         if(Greenfoot.isKeyDown("down"))
