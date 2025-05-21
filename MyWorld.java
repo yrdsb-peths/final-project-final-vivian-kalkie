@@ -16,10 +16,15 @@ public class MyWorld extends World {
     
     public void createBlock()
     {
-        Block block = new Block();
-        int x = 1300;
-        int y = Greenfoot.getRandomNumber(600);
-        addObject(block, x, y);
-//main 
+        int spacing = 20;
+        int yPos = Greenfoot.getRandomNumber(600);
+        int xInt = 1000;
+        
+        for(int i = 0; i < 20; i++)
+        {
+            int xPos = xInt + i * spacing;
+            Block block = new Block();
+            addObject(block, xPos, yPos);
+        }
     }
 }
