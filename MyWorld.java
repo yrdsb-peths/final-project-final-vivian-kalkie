@@ -20,6 +20,6 @@ public class MyWorld extends World {
         int x = 1300;
         int y = Greenfoot.getRandomNumber(600);
         addObject(block, x, y);
->>>>>>> main
+//main 
     }
 }
