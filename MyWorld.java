@@ -7,8 +7,9 @@ public class MyWorld extends World {
         // Create the scubadiver object 
         Scubadiver scubadiver = new Scubadiver();
         addObject(scubadiver, 300, 250);
-    
-        for(int i = 0; i < Greenfoot.getRandomNumber(15); i++)
+        
+        //generate a random row of blocks.
+        for(int i = 0; i < Greenfoot.getRandomNumber(10); i++)
         {
             createBlock();
         }
@@ -18,8 +19,9 @@ public class MyWorld extends World {
     {
         int spacing = 20;
         int yPos = Greenfoot.getRandomNumber(600);
-        int xInt = 1000;
+        int xInt = 500;
         
+        //making the blocks into rows of blocks.
         for(int i = 0; i < 20; i++)
         {
             int xPos = xInt + i * spacing;
