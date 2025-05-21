@@ -5,6 +5,8 @@ public class Scubadiver extends Actor
     GreenfootSound bubblepopSound = new GreenfootSound("bubblepop.mp3");
     
     int speed = 100;
+    //GreenfootImage up = new GreenfootImage();
+    //GreenfootImage down = new GreenfootImage();
     public void act()
     {
         if(Greenfoot.isKeyDown("down"))
