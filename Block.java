@@ -5,7 +5,7 @@ public class Block extends Actor
     //resizing the block.
     public Block(){
         GreenfootImage img = new GreenfootImage("grass001.png");
-        img.scale(20, 20);
+        img.scale(img.getWidth(), 20);
         setImage(img);
     }
     

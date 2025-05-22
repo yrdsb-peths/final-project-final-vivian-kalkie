@@ -3,6 +3,7 @@ import greenfoot.*;
 public class MyWorld extends World {
     public int score = 0;
     //Label scoreLabel;
+    
     int level = 1;
     
     public MyWorld() {
@@ -11,24 +12,18 @@ public class MyWorld extends World {
         GreenfootImage background = new GreenfootImage("forestbg.png");
         background.scale(getWidth(), getHeight());
         setBackground(background);
-    
         
-        
+        runBlockSpawnTimer();
         
         // Create the scubadiver object 
         Scubadiver scubadiver = new Scubadiver();
         addObject(scubadiver, 300, 250);
         
+        
         // Create a label 
         //scoreLabel = new Label(0, 80);
         //addObject(scoreLabel, 40, 40);
-    
-        //spawn random blocks of rows. 
 
-        for(int i = 0; i < Greenfoot.getRandomNumber(15); i++)
-        {
-            createBlock();
-        }
     }
     
     public void act(){
@@ -36,23 +31,32 @@ public class MyWorld extends World {
         GreenfootImage bg = new GreenfootImage(getBackground());
         getBackground().drawImage(bg, scrollAmt, 0);
         getBackground().drawImage(bg, scrollAmt + getHeight(), 0);
+        
     }
     
-    public void createBlock()
-    {
-        //to make the blocks into a row.
-        int spacing = 20;
-        int yPos = Greenfoot.getRandomNumber(600);
-        int xInt = 10;
-        
-        for(int i = 0; i < 20; i++)
+    //timer for when the blocks should spawn.
+    private int blockSpawnTimer;
+    
+    //spawning block every 5 secs?
+    private void runBlockSpawnTimer(){
+        blockSpawnTimer = (blockSpawnTimer + 1) % 300;
+        if(blockSpawnTimer == 0)
         {
-            int xPos = xInt + i * spacing;
+            createBlock();
+        }
+    }
+    
+    //method for spawning in the blocks.
+    private void createBlock()
+    {
+        int xPos = 1000;
+        int yPos = Greenfoot.getRandomNumber(600);
+        for(int i = 0; i < Greenfoot.getRandomNumber(5); i++)
+        {
             Block block = new Block();
             addObject(block, xPos, yPos);
         }
     }
-    
     /**
      * Increase score
      */
