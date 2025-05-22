@@ -4,7 +4,7 @@ public class Block extends Actor
 {
     //resizing the block.
     public Block(){
-        GreenfootImage img = new GreenfootImage("ironblock.png");
+        GreenfootImage img = new GreenfootImage("grass001.png");
         img.scale(20, 20);
         setImage(img);
     }

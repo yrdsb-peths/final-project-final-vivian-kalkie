@@ -32,7 +32,7 @@ public class MyWorld extends World {
     }
     
     public void act(){
-        int scrollAmt = -2;
+        int scrollAmt = -1;
         GreenfootImage bg = new GreenfootImage(getBackground());
         getBackground().drawImage(bg, scrollAmt, 0);
         getBackground().drawImage(bg, scrollAmt + getHeight(), 0);
