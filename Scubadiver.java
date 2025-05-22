@@ -12,8 +12,7 @@ public class Scubadiver extends Actor
         if(Greenfoot.isKeyDown("down"))
         {
             bubblepopSound.play();
-            turn(-90);
-            move(-100);
+            setLocation(getX(), 1300);
             if(isTouching(Block.class))
             {
                 setLocation(getX(), getY());
@@ -23,8 +22,7 @@ public class Scubadiver extends Actor
         else if(Greenfoot.isKeyDown("up"))
         {
             bubblepopSound.play();
-            turn(90);
-            move(-100);
+            setLocation(getX(), 0);
             if(isTouching(Block.class))
             {
                 setLocation(getX(), getY());
