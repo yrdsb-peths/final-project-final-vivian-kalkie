@@ -6,7 +6,14 @@ public class MyWorld extends World {
     int level = 1;
     
     public MyWorld() {
-        super(1300, 600, 1);
+        super(1200, 600, 1);
+        //scaling the background image.
+        GreenfootImage background = new GreenfootImage("forestbg.png");
+        background.scale(getWidth(), getHeight());
+        setBackground(background);
+    
+        
+        
         
         // Create the scubadiver object 
         Scubadiver scubadiver = new Scubadiver();
@@ -22,6 +29,13 @@ public class MyWorld extends World {
         {
             createBlock();
         }
+    }
+    
+    public void act(){
+        int scrollAmt = -2;
+        GreenfootImage bg = new GreenfootImage(getBackground());
+        getBackground().drawImage(bg, scrollAmt, 0);
+        getBackground().drawImage(bg, scrollAmt + getHeight(), 0);
     }
     
     public void createBlock()
