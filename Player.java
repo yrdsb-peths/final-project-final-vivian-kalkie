@@ -1,8 +1,9 @@
 import greenfoot.*;  
 
-public class Scubadiver extends Actor
+public class Player extends Actor
 {
     GreenfootSound bubblepopSound = new GreenfootSound("bubblepop.mp3");
+    GreenfootImage[] idle = new GreenfootImage[
     
     int speed = 100;
     //GreenfootImage up = new GreenfootImage();
