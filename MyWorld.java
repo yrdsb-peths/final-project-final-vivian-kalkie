@@ -16,8 +16,8 @@ public class MyWorld extends World {
         
         
         // Create the scubadiver object 
-        Scubadiver scubadiver = new Scubadiver();
-        addObject(scubadiver, 300, 250);
+        Player player = new Player();
+        addObject(player, 300, 250);
         
         
         // Create a label 
