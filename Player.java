@@ -14,6 +14,7 @@ public class Player extends Actor
         for(int i = 0; i < idle.length; i++)
         {
             idle[i] = new GreenfootImage("images/player_idle/idle" + i + ".png");
+            idle[i].scale(40, 30);
         }
         setImage(idle[0]);
     }
