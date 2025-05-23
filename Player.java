@@ -15,6 +15,7 @@ public class Player extends Actor
         {
             idle[i] = new GreenfootImage("images/player_idle/idle" + i + ".png");
         }
+        setImage(idle[0]);
     }
     public void act()
     {
