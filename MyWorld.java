@@ -1,4 +1,5 @@
 import greenfoot.*;
+import java.util.*;
 
 public class MyWorld extends World {
     public int score = 0;
@@ -13,7 +14,6 @@ public class MyWorld extends World {
         background.scale(getWidth(), getHeight());
         setBackground(background);
         
-        runBlockSpawnTimer();
         
         // Create the scubadiver object 
         Scubadiver scubadiver = new Scubadiver();
@@ -27,11 +27,13 @@ public class MyWorld extends World {
     }
     
     public void act(){
+        //making a scrolling bg
         int scrollAmt = -1;
         GreenfootImage bg = new GreenfootImage(getBackground());
         getBackground().drawImage(bg, scrollAmt, 0);
         getBackground().drawImage(bg, scrollAmt + getHeight(), 0);
         
+        runBlockSpawnTimer();
     }
     
     //timer for when the blocks should spawn.
@@ -39,24 +41,52 @@ public class MyWorld extends World {
     
     //spawning block every 5 secs?
     private void runBlockSpawnTimer(){
-        blockSpawnTimer = (blockSpawnTimer + 1) % 300;
+        blockSpawnTimer = (blockSpawnTimer + 1) % 200;
         if(blockSpawnTimer == 0)
         {
-            createBlock();
+            createTopBlock();
+        }
+        else if(blockSpawnTimer == 3){
+            createBottomBlock();
         }
     }
     
     //method for spawning in the blocks.
-    private void createBlock()
+    private void createTopBlock()
     {
-        int xPos = 1000;
-        int yPos = Greenfoot.getRandomNumber(600);
+        int xPos = 1800;
+        
+        int min = 0;
+        int max = 300;
+        int step = 10;
+        
+        int range = (max - min) / step + 1;
+        int yPos = Greenfoot.getRandomNumber(range) * step + min;
         for(int i = 0; i < Greenfoot.getRandomNumber(5); i++)
         {
             Block block = new Block();
             addObject(block, xPos, yPos);
         }
     }
+    
+    private void createBottomBlock()
+    {
+        int xPos = 1800;
+        
+        int min = 300;
+        int max = 600;
+        int step = 10;
+        
+        int range = (max-min) / step + 1;
+        int yPos = Greenfoot.getRandomNumber(range) * step + min;
+        for(int i = 0; i < Greenfoot.getRandomNumber(5); i++)
+        {
+            Block block = new Block();
+            addObject(block, xPos, yPos);
+        }
+    }
+    
+    
     /**
      * Increase score
      */

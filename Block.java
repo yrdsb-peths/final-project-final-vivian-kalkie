@@ -15,5 +15,11 @@ public class Block extends Actor
         int x = getX() - speed;
         int y = getY();
         setLocation(x, y);
+        
+        MyWorld world = (MyWorld) getWorld();
+        if(this.isAtEdge())
+        {
+            world.removeObject(this);
+        }
     }
 }
