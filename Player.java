@@ -17,6 +17,14 @@ public class Player extends Actor
         }
         setImage(idle[0]);
     }
+    
+    //animating the player.
+    int imageIndex = 0; 
+    public void animatePlayer(){
+        setImage(idle[imageIndex]);
+        imageIndex = (imageIndex + 1) % idle.length;
+    }
+    
     public void act()
     {
         if(Greenfoot.isKeyDown("down"))
@@ -39,6 +47,8 @@ public class Player extends Actor
                 turn(-90);
             }
         }
+        
+        animatePlayer();
     }
     
 }
