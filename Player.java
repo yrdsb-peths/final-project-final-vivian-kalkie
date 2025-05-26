@@ -38,6 +38,7 @@ public class Player extends Actor
             
         if(Greenfoot.isKeyDown("down"))
         {
+            turnTowards(1600, getY());
             fall();
             if(!isTouching(Block.class)){
             fall();
@@ -45,9 +46,9 @@ public class Player extends Actor
         }
         
         
-        
         if(Greenfoot.isKeyDown("up"))
         {
+            turnTowards(0, getY());
             rise();
             if(!isTouching(Block.class)){
             rise();
