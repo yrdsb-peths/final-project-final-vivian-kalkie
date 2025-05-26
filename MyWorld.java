@@ -1,42 +1,108 @@
 import greenfoot.*;
+import java.util.*;
 
 public class MyWorld extends World {
     public int score = 0;
     //Label scoreLabel;
+    
     int level = 1;
     
     public MyWorld() {
-        super(1300, 600, 1);
+        super(1200, 600, 1, false);
+        //scaling the background image.
+        GreenfootImage background = new GreenfootImage("forestbg.png");
+        background.scale(getWidth(), getHeight());
+        setBackground(background);
+        
         
         // Create the scubadiver object 
-        Scubadiver scubadiver = new Scubadiver();
-        addObject(scubadiver, 300, 250);
-        
-        // Create a label 
-        //scoreLabel = new Label(0, 80);
-        //addObject(scoreLabel, 40, 40);
+        Player player = new Player();
+        addObject(player, 300, 250);
     
-        //spawn random blocks of rows. 
-        for(int i = 0; i < Greenfoot.getRandomNumber(15); i++)
-        {
-            createBlock();
-        }
+
     }
     
-    public void createBlock()
-    {
-        //to make the blocks into a row.
-        int spacing = 20;
-        int yPos = Greenfoot.getRandomNumber(600);
-        int xInt = 500;
+    public void act(){
+        //making a scrolling bg
+        int scrollAmt = -1;
+        GreenfootImage bg = new GreenfootImage(getBackground());
+        getBackground().drawImage(bg, scrollAmt, 0);
+        getBackground().drawImage(bg, scrollAmt + getHeight(), 0);
         
-        for(int i = 0; i < 20; i++)
+        runBlockSpawnTimer();
+    }
+    
+    //timer for when the blocks should spawn.
+    private int blockSpawnTimer = 0;
+    
+    //spawning block every 5 secs?
+    
+    private void runBlockSpawnTimer(){
+        blockSpawnTimer = (blockSpawnTimer) % 100;
+        if(blockSpawnTimer == 0)
         {
-            int xPos = xInt + i * spacing;
+            createTopBlock();
+        }
+        else if(blockSpawnTimer == 3){
+            createBottomBlock();
+        }
+        blockSpawnTimer++;
+    }
+    
+    //method for spawning in the blocks.
+    public void createTopBlock()
+    {
+        int xPos = 2000;
+        
+        int min = 100;
+        int max = 200;
+        int step = 100;
+        
+        int range = (max - min) / step + 1;
+        int yPos = Greenfoot.getRandomNumber(range) * step + min;
+        for(int i = 0; i < Greenfoot.getRandomNumber(5); i++)
+        {
             Block block = new Block();
             addObject(block, xPos, yPos);
+            //to spawn another block if it is touching it. 
+            if(block.skibidi()) {
+                if(i!=0) {
+                    i--;
+                } else{
+                    i=0;
+                }
+            }
         }
     }
+    
+    public void createBottomBlock()
+    {
+        int xPos = 2000;
+        
+        int min = 300;
+        int max = 500;
+        int step = 100;
+        
+        int range = (max - min) / step + 1;
+        int yPos = Greenfoot.getRandomNumber(range) * step + min;
+        for(int i = 0; i < Greenfoot.getRandomNumber(5); i++)
+        {
+            Block block = new Block();
+            addObject(block, xPos, yPos);
+            //to spawn another block if it is touching it. 
+            if(block.skibidi()) {
+                if(i!=0) {
+                    i--;
+                } else{
+                    i=0;
+                }
+            }
+        }
+    }
+    
+    
+    
+    
     
     /**
      * Increase score
