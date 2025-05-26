@@ -38,7 +38,6 @@ public class Block extends Actor
     public boolean isCompletelyOffScreen(){
         if(getX() < 0 - getImage().getWidth() / 2)
         {
-            System.out.println("remove");
             return true;
         }
         return false;
