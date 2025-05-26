@@ -36,10 +36,12 @@ public class Player extends Actor
         if(Greenfoot.isKeyDown("down"))
         {
             fall();
+            bubblepopSound.play();
         }
         else if(Greenfoot.isKeyDown("up"))
         {
             rise();
+            bubblepopSound.play();
         }
         //animatePlayer();
     }
