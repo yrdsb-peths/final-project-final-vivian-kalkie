@@ -18,9 +18,7 @@ public class Player extends Actor
             idle[i].scale(40, 30);
         }
         */
-        GreenfootImage player = new GreenfootImage("firststand.png");
-        player.scale(40, 40);
-        setImage(player);
+        setImage(idle[0]);
     }
     
     //animating the player.
@@ -35,14 +33,11 @@ public class Player extends Actor
     
     public void act()
     {
-            
         if(Greenfoot.isKeyDown("down"))
         {
             turnTowards(1600, getY());
             fall();
-            if(!isTouching(Block.class)){
-            fall();
-            }
+            bubblepopSound.play();
         }
         
         
@@ -50,9 +45,7 @@ public class Player extends Actor
         {
             turnTowards(0, getY());
             rise();
-            if(!isTouching(Block.class)){
-            rise();
-            }
+            bubblepopSound.play();
         }
         //animatePlayer();
     }
@@ -62,18 +55,12 @@ public class Player extends Actor
         if(isTouching(Block.class)){
             setLocation(getX(), getY() - speed);
         }
-        else{
-            setLocation(getX(), getY() + speed);
-        }
     }
     
     public void rise(){
         setLocation(getX(), getY() - speed);
         if(isTouching(Block.class)){
             setLocation(getX(), getY() + speed);
-        }
-        else{
-            setLocation(getX(), getY() - speed);
         }
     }
 }
