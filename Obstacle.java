@@ -1,19 +1,32 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; 
 
-/**
- * Write a description of class Obstacle here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Obstacle extends Actor
 {
-    /**
-     * Act - do whatever the Obstacle wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private int speed;
+        
+    public Obstacle(int scrollSpeed)
+    {
+        this.speed = scrollSpeed;
+    }
+    
     public void act()
     {
-        // Add your action code here.
+        moveLeft();
+        //checkCollision();
     }
+    
+    private void moveLeft()
+    {
+        setLocation(getX() - speed, getY());
+    }
+    
+    //private void checkCollision();
+    //{
+      //   Player player = getOneIntersectingObject(Player.class);
+        // if (player =! null)
+         //{
+           //  Greenfoot.stop();
+             //fix game over here and add proper game over label
+         //}
+    //}
 }

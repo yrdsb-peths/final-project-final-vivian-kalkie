@@ -19,7 +19,8 @@ public class MyWorld extends World {
         Player player = new Player();
         addObject(player, 300, 250);
     
-
+        //Obstacle obstacle = new Obstacle();
+        //addObject
     }
     
     public void act(){
