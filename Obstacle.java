@@ -9,6 +9,14 @@ import greenfoot.*;
 
 public class Obstacle extends Actor
 {
+    //resizing the block.
+    public Obstacle()
+    {
+        GreenfootImage img = new GreenfootImage("obstacleblock.png");
+        img.scale(img.getWidth(), 20);
+        setImage(img);
+    }
+    
     private int speed;
         
     public Obstacle(int scrollSpeed)
