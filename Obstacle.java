@@ -1,5 +1,12 @@
 import greenfoot.*; 
 
+/**
+ * obstacle like the blocks in g switch which will hold back the player, ending the game 
+ * 
+ * @author Kalkie 
+ * @version May 2025
+ */
+
 public class Obstacle extends Actor
 {
     private int speed;
