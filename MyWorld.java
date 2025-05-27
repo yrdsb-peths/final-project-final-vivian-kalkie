@@ -14,13 +14,11 @@ public class MyWorld extends World {
         background.scale(getWidth(), getHeight());
         setBackground(background);
         
-        
         // Create the scubadiver object 
         Player player = new Player();
         addObject(player, 300, 250);
     
         //Obstacle obstacle = new Obstacle();
-        //addObject
     }
     
     public void act(){
