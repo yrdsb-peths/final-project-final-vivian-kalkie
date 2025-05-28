@@ -6,6 +6,8 @@ public class Player extends Actor
     GreenfootImage[] idle = new GreenfootImage[5];
     
     private int speed = 5;
+    private int moveSpeed = 4;
+    private int maxSpeed = 10;
     
     //GreenfootImage up = new GreenfootImage();
     //GreenfootImage down = new GreenfootImage();
@@ -65,4 +67,14 @@ public class Player extends Actor
             setLocation(getX(), getY() + speed);
         }
     }
+    
+    //increasing the speed (powerup code cont'd)
+    public void increaseSpeed()
+    {
+        if (moveSpeed < maxSpeed)
+        {
+            moveSpeed += 2;
+        }
+    }
+    
 }
