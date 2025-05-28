@@ -9,6 +9,16 @@ public class SpeedPowerUp extends Actor
 {
     public SpeedPowerUp()
     {
-        Greenfoot.setImage
+        GreenfootImage img = new GreenfootImage("powerup.png");
+    }
+    
+    public void act()
+    {
+        if(isTouching(Player.class))
+        {
+            Player player = (Player) getOneIntersectingObject(Player.class);
+            player.increaseSpeed();
+            getWorld().removeObject(this);
+        }
     }
 }
