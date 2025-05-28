@@ -18,7 +18,7 @@ public class Player extends Actor
             idle[i].scale(40, 30);
         }
         */
-        GreenfootImage player = new GreenfootImage("firststand.png");
+        GreenfootImage player = new GreenfootImage("firstrun.png");
         player.scale(40,40);
         setImage(player);
     }

@@ -35,12 +35,12 @@ public class Obstacle extends Actor
         setLocation(getX() - speed, getY());
     }
     
-    //private void checkCollision();
+    //private void checkCollision()
     //{
-      //   Player player = getOneIntersectingObject(Player.class);
-        // if (player =! null)
+         //Player player = getOneIntersectingObject(//greenfoot.Actor);
+         //if (player =! null)
          //{
-           //  Greenfoot.stop();
+         //    Greenfoot.stop();
              //fix game over here and add proper game over label
          //}
     //}
