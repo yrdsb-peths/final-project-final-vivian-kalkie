@@ -21,7 +21,7 @@ public class Player extends Actor
         }
         */
         GreenfootImage player = new GreenfootImage("firstrun.png");
-        player.scale(40,40);
+        player.scale(55,55);
         setImage(player);
     }
     
