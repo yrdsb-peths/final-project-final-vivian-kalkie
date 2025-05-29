@@ -6,11 +6,12 @@ public class Player extends Actor
     GreenfootImage[] idle = new GreenfootImage[5];
     
     private int speed = 5;
-    private int moveSpeed = 4;
+    // private int moveSpeed = 4;
     private int maxSpeed = 10;
+    private boolean isFalling = true;
     
-    //GreenfootImage up = new GreenfootImage();
-    //GreenfootImage down = new GreenfootImage();
+    SimpleTimer flipTimer = new SimpleTimer();
+    
     
     public Player()
     {
@@ -23,6 +24,8 @@ public class Player extends Actor
         GreenfootImage player = new GreenfootImage("firstrun.png");
         player.scale(40,40);
         setImage(player);
+        
+        flipTimer.mark();
     }
     
     //animating the player.
@@ -37,20 +40,14 @@ public class Player extends Actor
     
     public void act()
     {
-        if(Greenfoot.isKeyDown("down"))
-        {
-            turnTowards(1600, getY());
-            fall();
-            bubblepopSound.play();
+        if(Greenfoot.isKeyDown("space") && flipTimer.millisElapsed() > 200){
+            speed *= -1;
+            turn(180);
+            flipTimer.mark();
         }
         
-        
-        if(Greenfoot.isKeyDown("up"))
-        {
-            turnTowards(0, getY());
-            rise();
-            bubblepopSound.play();
-        }
+        setLocation(getX(), getY() + speed);
+
         //animatePlayer();
     }
     
@@ -71,10 +68,10 @@ public class Player extends Actor
     //increasing the speed (powerup code cont'd)
     public void increaseSpeed()
     {
-        if (moveSpeed < maxSpeed)
-        {
-            moveSpeed += 2;
-        }
+        // if (moveSpeed < maxSpeed)
+        // {
+            // moveSpeed += 2;
+        // }
     }
     
 }

@@ -37,7 +37,7 @@ public class MyWorld extends World {
     //spawning block every 5 secs?
     
     private void runBlockSpawnTimer(){
-        blockSpawnTimer = (blockSpawnTimer) % 100;
+        blockSpawnTimer = (blockSpawnTimer) % 10;
         if(blockSpawnTimer == 0)
         {
             createTopBlock();
