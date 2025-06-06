@@ -8,6 +8,7 @@ public class Player extends Actor
     private int speed = 5;
     private int moveSpeed = 4;
     private int maxSpeed = 10;
+    private int dir = 0;
     
     //GreenfootImage up = new GreenfootImage();
     //GreenfootImage down = new GreenfootImage();
@@ -44,18 +45,48 @@ public class Player extends Actor
             bubblepopSound.play();
         }
         
-        
         if(Greenfoot.isKeyDown("up"))
         {
             turnTowards(0, getY());
             rise();
             bubblepopSound.play();
         }
+        
+        if(dir == 0){
+            fall();
+        } else {
+            rise();
+        }
         //animatePlayer();
     }
     
     public void fall(){
         setLocation(getX(), getY() + speed);
+        dir = 0;
+        Actor obj = getOneObjectAtOffset(0, 17, Block.class);
+        
+        if(obj != null){
+            speed = 0;
+        } else {
+            speed = 5;
+        }
+    }
+    
+    public void rise(){
+        setLocation(getX(), getY() - speed);
+        dir = 1;
+        Actor obj = getOneObjectAtOffset(0, -23, Block.class);
+        
+        if(obj != null){
+            speed = 0;
+        } else {
+            speed = 5;
+        }
+    }
+    
+    /**public void fall(){
+        setLocation(getX(), getY() + speed);
+        dir = 0;
         if(isTouching(Block.class)){
             setLocation(getX(), getY() - speed);
         }
@@ -63,10 +94,11 @@ public class Player extends Actor
     
     public void rise(){
         setLocation(getX(), getY() - speed);
+        dir = 1;
         if(isTouching(Block.class)){
             setLocation(getX(), getY() + speed);
         }
-    }
+    }**/
     
     //increasing the speed (powerup code cont'd)
     public void increaseSpeed()
