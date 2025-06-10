@@ -6,6 +6,7 @@ public class MyWorld extends World {
     //Label scoreLabel;
     
     int level = 1;
+    private int platCount = 0;
     
     public MyWorld() {
         super(1200, 600, 1, false);
@@ -19,6 +20,11 @@ public class MyWorld extends World {
         addObject(player, 300, 250);
     
         //Obstacle obstacle = new Obstacle();
+        
+        //spawn platform
+        
+        
+        spawnPlatform();
     }
     
     public void act(){
@@ -31,9 +37,22 @@ public class MyWorld extends World {
         runBlockSpawnTimer();
     }
     
+    private void spawnPlatform(){
+        Block platform = new Block();
+        
+        if(platCount == 0)
+        {
+            addObject(platform, 300, 400);
+            platCount = 0;
+        }
+        else
+        {
+            platCount++;
+        }   
+    }
+    
     //timer for when the blocks should spawn.
     private int blockSpawnTimer = 0;
-    
     //spawning block every 5 secs?
     
     private void runBlockSpawnTimer(){
