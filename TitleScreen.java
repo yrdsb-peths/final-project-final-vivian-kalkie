@@ -16,7 +16,11 @@ public class TitleScreen extends World
     public TitleScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(1200, 600, 1, false);
+        //scaling the background image.
+        GreenfootImage background = new GreenfootImage("forestbg.png");
+        background.scale(getWidth(), getHeight());
+        setBackground(background); 
         
         addObject(titleLabel, getWidth()/2, 200);
         prepare();
@@ -29,7 +33,7 @@ public class TitleScreen extends World
     private void prepare()
     {
         Player player = new Player();
-        addObject(player, 479, 87);
+        addObject(player, 300, 250);
         Obstacle obstacle = new Obstacle();
     }
     
