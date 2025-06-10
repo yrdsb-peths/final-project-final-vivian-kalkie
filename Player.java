@@ -3,38 +3,47 @@ import greenfoot.*;
 public class Player extends Actor
 {
     GreenfootSound bubblepopSound = new GreenfootSound("bubblepop.mp3");
-    GreenfootImage[] idle = new GreenfootImage[5];
+    GreenfootImage[] idleUp = new GreenfootImage[5];
+    GreenfootImage[] idleDown = new GreenfootImage[5];
     
     private int speed = 5;
     private int moveSpeed = 4;
     private int maxSpeed = 10;
     private int dir = 0;
+    private int imgCount = 0;
     
     //GreenfootImage up = new GreenfootImage();
     //GreenfootImage down = new GreenfootImage();
     
     public Player()
     {
-        /**for(int i = 0; i < idle.length; i++)
+        for(int i = 0; i < idleUp.length; i++)
         {
-            idle[i] = new GreenfootImage("images/player_idle/idle" + i + ".png");
-            idle[i].scale(40, 30);
+            idleUp[i] = new GreenfootImage("images/player_idle/idle" + i + ".png");
+            idleDown[i] = new GreenfootImage("images/player_idle/idle" + i + ".png");
+            idleUp[i].scale(55, 55);
+            idleDown[i].scale(55, 55);
+            
+            idleUp[i].mirrorHorizontally();
         }
-        */
-        GreenfootImage player = new GreenfootImage("firstrun.png");
-        player.scale(55,55);
-        setImage(player);
+        setImage(idleDown[0]);
     }
     
     //animating the player.
-    /**
-     * 
+    
     int imageIndex = 0; 
     public void animatePlayer(){
-        setImage(idle[imageIndex]);
-        imageIndex = (imageIndex + 1) % idle.length;
+        if(dir == 0)
+        {
+            setImage(idleDown[imageIndex]);
+        }
+        else
+        {
+            setImage(idleUp[imageIndex]);
+        }   
+        imageIndex = (imageIndex + 1) % idleUp.length;
     }
-    */
+    
     
     public void act()
     {
@@ -57,7 +66,15 @@ public class Player extends Actor
         } else {
             rise();
         }
-        //animatePlayer();
+        if(imgCount == 5)
+        {
+            animatePlayer();
+            imgCount = 0;
+        }
+        else
+        {
+            imgCount++;
+        }
     }
     
     public void fall(){
@@ -70,6 +87,7 @@ public class Player extends Actor
         } else {
             speed = 5;
         }
+        
     }
     
     public void rise(){
@@ -82,6 +100,8 @@ public class Player extends Actor
         } else {
             speed = 5;
         }
+        
+        
     }
     
     /**public void fall(){
