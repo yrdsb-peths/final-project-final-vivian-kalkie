@@ -38,10 +38,10 @@ public class MyWorld extends World {
     }
     
     private void spawnPlatform(){
-        Block platform = new Block();
         
         if(platCount == 0)
         {
+            Block platform = new Block();
             addObject(platform, 300, 400);
             platCount = 0;
         }
