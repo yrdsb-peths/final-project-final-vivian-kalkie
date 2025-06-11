@@ -20,11 +20,7 @@ public class MyWorld extends World {
         addObject(player, 300, 250);
     
         //Obstacle obstacle = new Obstacle();
-        
-        //spawn platform
-        
-        
-        spawnPlatform();
+    
     }
     
     public void act(){
@@ -35,21 +31,10 @@ public class MyWorld extends World {
         getBackground().drawImage(bg, scrollAmt + getHeight(), 0);
         
         runBlockSpawnTimer();
-    }
-    
-    private void spawnPlatform(){
         
-        if(platCount == 0)
-        {
-            Block platform = new Block();
-            addObject(platform, 300, 400);
-            platCount = 0;
-        }
-        else
-        {
-            platCount++;
-        }   
+    
     }
+
     
     //timer for when the blocks should spawn.
     private int blockSpawnTimer = 0;
