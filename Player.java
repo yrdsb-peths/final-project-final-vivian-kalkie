@@ -6,11 +6,13 @@ public class Player extends Actor
     GreenfootImage[] idleUp = new GreenfootImage[5];
     GreenfootImage[] idleDown = new GreenfootImage[5];
     
-    private int speed = 5;
+    private int speed = 0;
     private int moveSpeed = 4;
     private int maxSpeed = 10;
     private int dir = 0;
     private int imgCount = 0;
+    
+    private boolean first = true;
     
     //GreenfootImage up = new GreenfootImage();
     //GreenfootImage down = new GreenfootImage();
@@ -29,6 +31,23 @@ public class Player extends Actor
         setImage(idleDown[0]);
     }
     
+    public void act(){
+        if(first){
+            if(Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("up")){
+                first = false;
+                speed = 5;
+            }
+        } else {
+            gameplay();
+        }
+    }
+    
+    public void standStill(){
+        speed = 0;
+        
+        
+    }
+    
     //animating the player.
     
     int imageIndex = 0; 
@@ -45,7 +64,7 @@ public class Player extends Actor
     }
     
     
-    public void act()
+    public void gameplay()
     {
         if(Greenfoot.isKeyDown("down"))
         {
