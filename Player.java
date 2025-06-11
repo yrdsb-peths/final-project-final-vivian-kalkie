@@ -128,5 +128,4 @@ public class Player extends Actor
             moveSpeed += 2;
         }
     }
-    
 }
