@@ -42,11 +42,6 @@ public class Player extends Actor
         }
     }
     
-    public void standStill(){
-        speed = 0;
-    
-    }
-    
     //animating the player.
     
     int imageIndex = 0; 
@@ -92,6 +87,10 @@ public class Player extends Actor
         else
         {
             imgCount++;
+        }
+        
+        if(getY() <= -55 || getY() >= 655){
+            getWorld().removeObject(this);
         }
     }
     

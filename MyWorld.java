@@ -7,6 +7,7 @@ public class MyWorld extends World {
     
     int level = 1;
     private int platCount = 0;
+    Player player;
     
     public MyWorld() {
         super(1200, 600, 1, false);
@@ -16,7 +17,7 @@ public class MyWorld extends World {
         setBackground(background);
         
         // Create the scubadiver object 
-        Player player = new Player();
+        this.player = new Player();
         addObject(player, 300, 250);
     
         //Obstacle obstacle = new Obstacle();
@@ -31,8 +32,6 @@ public class MyWorld extends World {
         getBackground().drawImage(bg, scrollAmt + getHeight(), 0);
         
         runBlockSpawnTimer();
-        
-    
     }
 
     
