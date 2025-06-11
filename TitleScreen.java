@@ -8,7 +8,8 @@ import greenfoot.*;
  */
 public class TitleScreen extends World
 {   
-    Label titleLabel = new Label("Runner", 60);
+    //Label titleLabel = new Label("Runner", 60);
+    
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -22,8 +23,14 @@ public class TitleScreen extends World
         background.scale(getWidth(), getHeight());
         setBackground(background); 
         
-        addObject(titleLabel, getWidth()/2, 200);
+        
+        //addObject(titleLabel, getWidth()/2, 200);
         prepare();
+        
+        
+        //add title
+        Title title = new Title();
+        addObject(title, 650, 200);
     }
     
     /**
@@ -36,6 +43,7 @@ public class TitleScreen extends World
         addObject(player, 300, 250);
         Obstacle obstacle = new Obstacle();
     }
+
     
     /**
      * Main world act loop
