@@ -44,8 +44,7 @@ public class Player extends Actor
     
     public void standStill(){
         speed = 0;
-        
-        
+    
     }
     
     //animating the player.
