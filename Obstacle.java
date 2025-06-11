@@ -10,12 +10,7 @@ import greenfoot.*;
 public class Obstacle extends Actor
 {
     //resizing the block.
-    public Obstacle()
-    {
-        GreenfootImage img = new GreenfootImage("obstacleblock.png");
-        img.scale(35, 35);
-        setImage(img);
-    }
+    /*
     
     private int speed;
         
@@ -27,21 +22,25 @@ public class Obstacle extends Actor
     public void act()
     {
         moveLeft();
-        //checkCollision();
     }
     
     private void moveLeft()
     {
         setLocation(getX() - speed, getY());
     }
-    
-    //private void checkCollision()
-    //{
-         //Player player = getOneIntersectingObject(//greenfoot.Actor);
-         //if (player =! null)
-         //{
-         //    Greenfoot.stop();
-             //fix game over here and add proper game over label
-         //}
-    //}
+    */
+   
+   int OBSTACLE_SPEED= -4;
+   
+   public void act() 
+   {
+       setLocation(getX() + OBSTACLE_SPEED, getY());
+   }
+   public  void Obstacle()
+    {
+        
+        GreenfootImage img = new GreenfootImage("obstacleblock.png");
+        img.scale(15, 15);
+        setImage(img);
+    }
 }

@@ -10,6 +10,7 @@ public class SpeedPowerUp extends Actor
     public SpeedPowerUp()
     {
         GreenfootImage img = new GreenfootImage("powerup.png");
+        setImage(img);
     }
     
     public void act()
