@@ -7,7 +7,7 @@ public class MyWorld extends World {
     int pipeCounter = 0;
     public MyWorld world;
     public int scrollAmt=-1;
-    private int score=0;
+    private int score = 0;
     private int newScore=0;
     private Score scoreObj=null;
     
@@ -183,23 +183,8 @@ public class MyWorld extends World {
     /**
      * Increase score
      */
-    //public void increaseScore()
+    public void increaseScore(int amount)
     {
-        //score++;
-        //scoreLabel.setValue(score);
-         
-        //if(score % 5 == 0)
-        //{
-            //level += 1;
-        //}
+        score += amount;
     }
-    
-    /**
-     * End the game and draw game over
-     */
-    //public void gameOver()
-    //{
-        //Label gameOverLabel = new Label("Game Over", 100);
-        //addObject(gameOverLabel, getWidth()/2, 200);
-    //}
 }

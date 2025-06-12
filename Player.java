@@ -15,10 +15,12 @@ public class Player extends Actor
     private int imgCount = 0;
     
     private Score scoreObj=null;
+    private Block lastBlock = null;
     
     //GreenfootImage up = new GreenfootImage();
     //GreenfootImage down = new GreenfootImage();
     public void act(){
+        checkLandingOnBlock();
         setLocation (getX(), (int)(getY()+dy));
         
         if(getY() > getWorld().getHeight()-20){
@@ -121,27 +123,23 @@ public class Player extends Actor
         } else {
             speed = 5;
         }
-        
-        
     }
     
-    
-    
-    /**public void fall(){
-        setLocation(getX(), getY() + speed);
-        dir = 0;
-        if(isTouching(Block.class)){
-            setLocation(getX(), getY() - speed);
+    private void checkLandingOnBlock()
+    {
+        Block currentBlock = (Block) getOneObjectAtOffset(0, getImage().getHeight()/2 + 1, Block.class);
+        if (currentBlock != null && currentBlock != lastBlock)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            world.increaseScore(2);
+            lastBlock = currentBlock;
+        }
+        //if not on any block
+        if (currentBlock == null)
+        {
+            lastBlock = null;
         }
     }
-    
-    public void rise(){
-        setLocation(getX(), getY() - speed);
-        dir = 1;
-        if(isTouching(Block.class)){
-            setLocation(getX(), getY() + speed);
-        }
-    }**/
     
     //increasing the speed (powerup code cont'd)
     public void increaseSpeed()
