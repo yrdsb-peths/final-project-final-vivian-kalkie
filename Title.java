@@ -22,4 +22,5 @@ public class Title extends Actor
         title.scale(500, 100);
         setImage(title);
     }
+    
 }
