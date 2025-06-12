@@ -9,6 +9,8 @@ public class MyWorld extends World {
     private int platCount = 0;
     Player player;
     
+    int pipeCounter = 0;
+    
     public MyWorld() {
         super(1200, 600, 1, false);
         //scaling the background image.
@@ -28,6 +30,13 @@ public class MyWorld extends World {
     }
     
     public void act(){
+        
+        pipeCounter++;
+        if(pipeCounter%200==0){
+            createObstacles();
+        }
+        
+        
         //making a scrolling bg
         int scrollAmt = -1;
         GreenfootImage bg = new GreenfootImage(getBackground());
@@ -35,6 +44,16 @@ public class MyWorld extends World {
         getBackground().drawImage(bg, scrollAmt + getHeight(), 0);
         
         runBlockSpawnTimer();
+
+
+    }
+    
+    public void createObstacles(){
+        Obstacle big= new Obstacle();
+        int heightShift  =  Greenfoot.getRandomNumber(1000);
+    
+        GreenfootImage image= big.getImage();
+        addObject(big, getWidth(), getHeight()+ heightShift-400);
     }
 
     
