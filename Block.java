@@ -10,7 +10,7 @@ public class Block extends Actor
     }
     
     
-    int speed = 1;
+    int speed =1;
 
     public void act()
     {

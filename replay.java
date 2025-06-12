@@ -16,7 +16,7 @@ public class replay extends Actor
     {
         if (Greenfoot.mouseClicked(this)) 
         {
-            Greenfoot.setWorld(new WelcomeWorld()); 
+            Greenfoot.setWorld(new MyWorld()); 
         }
     }
 }

@@ -14,9 +14,10 @@ public class Player extends Actor
     private int dir = 0;
     private int imgCount = 0;
     
+    private Score scoreObj=null;
+    
     //GreenfootImage up = new GreenfootImage();
     //GreenfootImage down = new GreenfootImage();
-    
     public void act(){
         setLocation (getX(), (int)(getY()+dy));
         
@@ -61,6 +62,10 @@ public class Player extends Actor
         {
             imgCount++;
         }
+        
+        if(getOneIntersectingObject(Ball.class) !=null){
+            getWorld().removeObject(getOneIntersectingObject(Ball.class));
+        }
     }
     
     
@@ -97,7 +102,7 @@ public class Player extends Actor
         setLocation(getX(), getY() + speed);
         dir = 0;
         Actor obj = getOneObjectAtOffset(0, 17, Block.class);
-        
+        ((MyWorld)getWorld()).changeScore(2);
         if(obj != null){
             speed = 0;
         } else {
