@@ -21,7 +21,10 @@ public class MyWorld extends World {
         addObject(player, 300, 250);
     
         //Obstacle obstacle = new Obstacle();
-    
+        // create the instruction sheet
+        Scroll scroll = new Scroll();
+        addObject(scroll, 700, 300);
+        
     }
     
     public void act(){
@@ -54,7 +57,7 @@ public class MyWorld extends World {
     //method for spawning in the blocks.
     public void createTopBlock()
     {
-        int xPos = 2000;
+        int xPos = 1500;
         
         int min = 100;
         int max = 200;
@@ -79,7 +82,7 @@ public class MyWorld extends World {
     
     public void createBottomBlock()
     {
-        int xPos = 2000;
+        int xPos = 1500;
         
         int min = 300;
         int max = 500;

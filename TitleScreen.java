@@ -30,10 +30,11 @@ public class TitleScreen extends World
         
         //add title
         Title title = new Title();
-        addObject(title, 650, 200);
+        addObject(title, 600, 200);
         
         Button play = new Button();
-        addObject(play, 650, 400);
+        addObject(play, 600, 400);
+        
     }
     
     /**
@@ -54,7 +55,7 @@ public class TitleScreen extends World
     public void act()
     {
         // Starting the game if the user presses the space bar 
-        if (Greenfoot.isKeyDown("space"))
+        if(Greenfoot.isKeyDown("space"))
         {
             MyWorld gameWorld = new MyWorld();
             Greenfoot.setWorld(gameWorld);

@@ -121,21 +121,6 @@ public class Player extends Actor
         
     }
     
-    /**public void fall(){
-        setLocation(getX(), getY() + speed);
-        dir = 0;
-        if(isTouching(Block.class)){
-            setLocation(getX(), getY() - speed);
-        }
-    }
-    
-    public void rise(){
-        setLocation(getX(), getY() - speed);
-        dir = 1;
-        if(isTouching(Block.class)){
-            setLocation(getX(), getY() + speed);
-        }
-    }**/
     
     //increasing the speed (powerup code cont'd)
     public void increaseSpeed()

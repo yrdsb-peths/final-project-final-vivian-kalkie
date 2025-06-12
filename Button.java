@@ -20,7 +20,7 @@ public class Button extends Actor
     public Button()
     {
         GreenfootImage play = new GreenfootImage("buttons.png");
-        play.scale(300, 100);
+        play.scale(800, 60);
         setImage(play);
     }
 }
