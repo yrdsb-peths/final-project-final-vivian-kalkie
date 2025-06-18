@@ -30,17 +30,9 @@ public class Obstacle extends Actor
     }
     */
    
-   int OBSTACLE_SPEED= -4;
+   int vSpeed =10;
    
-   public void act() 
-   {
-       setLocation(getX() + OBSTACLE_SPEED, getY());
+   public void act(){
+       setLocation(getX()-vSpeed, getY());
    }
-   public  void Obstacle()
-    {
-        
-        GreenfootImage img = new GreenfootImage("obstacleblock.png");
-        img.scale(15, 15);
-        setImage(img);
-    }
 }

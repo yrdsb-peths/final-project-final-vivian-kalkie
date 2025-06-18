@@ -1,15 +1,17 @@
 import greenfoot.*;
 import java.util.*;
 
-public class MyWorld extends World {
-    public int score = 0;
-    //Label scoreLabel;
-    
+public class MyWorld extends World {    
     int level = 1;
     private int platCount = 0;
-    Player player;
-    
     int pipeCounter = 0;
+    public MyWorld world;
+    public int scrollAmt=-1;
+    private int score = 0;
+    private int newScore=0;
+    private Score scoreObj=null;
+    
+
     
     public MyWorld() {
         super(1200, 600, 1, false);
@@ -19,33 +21,83 @@ public class MyWorld extends World {
         setBackground(background);
         
         // Create the scubadiver object 
-        this.player = new Player();
+        Player player = new Player();
         addObject(player, 300, 250);
     
         //Obstacle obstacle = new Obstacle();
-        // create the instruction sheet
-        Scroll scroll = new Scroll();
-        addObject(scroll, 700, 300);
         
+        scoreObj= new Score();
+        scoreObj.setScore(0);
+        addObject(scoreObj,100,100);
+    
+    }
+    
+    public void changeScore(double newScore){
+        score+=newScore;
     }
     
     public void act(){
         
         pipeCounter++;
+        
         if(pipeCounter%200==0){
             createObstacles();
         }
+        if (pipeCounter%50==0){
+            score++;
+        }
+        if (pipeCounter%100==0){
+            Ball();
+        }
         
-        
-        //making a scrolling bg
-        int scrollAmt = -1;
         GreenfootImage bg = new GreenfootImage(getBackground());
         getBackground().drawImage(bg, scrollAmt, 0);
         getBackground().drawImage(bg, scrollAmt + getHeight(), 0);
         
         runBlockSpawnTimer();
+        checkCollision();
+    }
+    public void checkCollision() {
+        if (!getObjects(Player.class).isEmpty() && !getObjects(Ball.class).isEmpty()) {
+            Player player = (Player)getObjects(Player.class).get(0);
+            Ball ball = (Ball)getObjects(Ball.class).get(0);
+    
+            int px = player.getX();
+            int py = player.getY();
+            int bx = ball.getX();
+            int by = ball.getY();
+    
+            if (Math.abs(px - bx) < 20 && Math.abs(py - by) < 20) {
+                scrollAmt = -10;
+                if(pipeCounter==pipeCounter+100){
+                    scrollAmt=-1;
+                }
+            }
+        }
+    }
+    
 
-
+    
+    public void Obstacles(){
+        Random random= new Random();
+        int verticalShift = random.nextInt(20,540);
+        
+        
+        Obstacle obstacle= new Obstacle();
+        GreenfootImage image= obstacle.getImage();
+        addObject(obstacle, getWidth(), getHeight()-verticalShift);
+        
+    }
+    
+    public void Ball(){
+        Random random = new Random();
+        int verticalShift = random.nextInt(50,500);
+        int horizontalShift= Greenfoot.getRandomNumber(100);
+        
+        Ball ball= new Ball();
+        GreenfootImage image= ball.getImage();
+        addObject(ball, getWidth()+horizontalShift, getHeight()-verticalShift);
+        
     }
     
     public void createObstacles(){
@@ -76,7 +128,7 @@ public class MyWorld extends World {
     //method for spawning in the blocks.
     public void createTopBlock()
     {
-        int xPos = 1500;
+        int xPos = 2000;
         
         int min = 100;
         int max = 200;
@@ -101,7 +153,7 @@ public class MyWorld extends World {
     
     public void createBottomBlock()
     {
-        int xPos = 1500;
+        int xPos = 2000;
         
         int min = 300;
         int max = 500;
@@ -131,23 +183,8 @@ public class MyWorld extends World {
     /**
      * Increase score
      */
-    //public void increaseScore()
+    public void increaseScore(int amount)
     {
-        //score++;
-        //scoreLabel.setValue(score);
-         
-        //if(score % 5 == 0)
-        //{
-            //level += 1;
-        //}
+        score += amount;
     }
-    
-    /**
-     * End the game and draw game over
-     */
-    //public void gameOver()
-    //{
-        //Label gameOverLabel = new Label("Game Over", 100);
-        //addObject(gameOverLabel, getWidth()/2, 200);
-    //}
 }

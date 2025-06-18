@@ -14,6 +14,7 @@ public class Player extends Actor
     private int dir = 0;
     private int imgCount = 0;
     
+
     public Player()
     {
         for(int i = 0; i < idleUp.length; i++)
@@ -34,6 +35,14 @@ public class Player extends Actor
 
     public void act()
     {
+    private Score scoreObj=null;
+    private Block lastBlock = null;
+    
+    //GreenfootImage up = new GreenfootImage();
+    //GreenfootImage down = new GreenfootImage();
+    public void act(){
+        checkLandingOnBlock();
+
         setLocation (getX(), (int)(getY()+dy));
         
         if(getY() > getWorld().getHeight()-20){
@@ -41,6 +50,7 @@ public class Player extends Actor
                 getWorld().addObject (gameOver, getWorld().getWidth()/2, getWorld().getHeight()/2);
                 Greenfoot.stop();
         }
+
     }
          
     public void gameplay(){
@@ -79,8 +89,8 @@ public class Player extends Actor
             imgCount++;
         }
         
-        if(getY() <= -55 || getY() >= 655){
-            getWorld().removeObject(this);
+        if(getOneIntersectingObject(Ball.class) !=null){
+            getWorld().removeObject(getOneIntersectingObject(Ball.class));
         }
     }
 
@@ -104,7 +114,7 @@ public class Player extends Actor
         setLocation(getX(), getY() + speed);
         dir = 0;
         Actor obj = getOneObjectAtOffset(0, 17, Block.class);
-        
+        ((MyWorld)getWorld()).changeScore(2);
         if(obj != null){
             speed = 0;
         } else {
@@ -123,11 +133,23 @@ public class Player extends Actor
         } else {
             speed = 5;
         }
-        
-        
     }
     
-
+    private void checkLandingOnBlock()
+    {
+        Block currentBlock = (Block) getOneObjectAtOffset(0, getImage().getHeight()/2 + 1, Block.class);
+        if (currentBlock != null && currentBlock != lastBlock)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            world.increaseScore(2);
+            lastBlock = currentBlock;
+        }
+        //if not on any block
+        if (currentBlock == null)
+        {
+            lastBlock = null;
+        }
+    }
     
     //increasing the speed (powerup code cont'd)
     public void increaseSpeed()

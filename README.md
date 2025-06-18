@@ -1,20 +1,6 @@
-# Set up Greenfoot for VSCode
+# F-Switch (recreation of G-switch)
 
-[Mac]
-1. Open `Finder` and navigate to the Applications folder.
-2. Right-click on the Greenfoot app and select `Show Package Contents`.
-3. In the opened folder, go to `Contents -> Resources -> Java` and find the `greenfoot.jar` file.
-4. Copy this `greenfoot.jar` to the `/lib` Folder in this project.
+# the purple balls flying towards the player are powerups which make the player go faster and the rocks are the obstacles that are flying towards the player.
 
-[Windows]
-1. Open `File Explorer` and navigate to `C:\Program Files\Greenfoot` and locate the `greenfoot.jar` file.
-2. Copy this `greenfoot.jar` to the `\lib` Folder in this project.
-
-<br>
-<br>
-
-# project.greenfoot
-Copy the `project.greenfoot.md` file and rename it to `project.greenfoot`
-
-# Learn Markdown Basics
-[Markdown basics](https://www.markdownguide.org/getting-started/)
+# Obstacles:
+#   the game will end with the sad face when the player directly bumps into it or even when the rock is within a close radius to the person, it works both ways. 
