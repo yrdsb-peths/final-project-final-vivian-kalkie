@@ -5,7 +5,7 @@ public class Player extends Actor
     GreenfootSound bubblepopSound = new GreenfootSound("bubblepop.mp3");
     GreenfootImage[] idleUp = new GreenfootImage[5];
     GreenfootImage[] idleDown = new GreenfootImage[5];
-    
+
     
     double dy=0;
     private int speed = 5;
@@ -14,36 +14,41 @@ public class Player extends Actor
     private int dir = 0;
     private int imgCount = 0;
     
+    public Player()
+    {
+        for(int i = 0; i < idleUp.length; i++)
+        {
+            idleUp[i] = new GreenfootImage("images/player_idle/idle" + i + ".png");
+            idleDown[i] = new GreenfootImage("images/player_idle/idle" + i + ".png");
+            idleUp[i].scale(55, 55);
+            idleDown[i].scale(55, 55);
+            
+            idleUp[i].mirrorHorizontally();
+        }
+        setImage(idleDown[0]);
+    }
+   
+    
     //GreenfootImage up = new GreenfootImage();
     //GreenfootImage down = new GreenfootImage();
-    
-    public void act(){
+
+    public void act()
+    {
         setLocation (getX(), (int)(getY()+dy));
         
         if(getY() > getWorld().getHeight()-20){
-            gameOver gameOver= new gameOver();
-            getWorld().addObject (gameOver, getWorld().getWidth()/2, getWorld().getHeight()/2);
-            Greenfoot.stop();
+                gameOver gameOver= new gameOver();
+                getWorld().addObject (gameOver, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                Greenfoot.stop();
         }
-
- 
-    
-    //animating the player.
-    
-    int imageIndex = 0; 
-    public void animatePlayer(){
-        if(dir == 0)
-        {
-            setImage(idleDown[imageIndex]);
-	}
-        
+    }
+         
+    public void gameplay(){
         if(getOneIntersectingObject(Obstacle.class)!=null){
             gameOver gameOver= new gameOver();
             getWorld().addObject (gameOver, getWorld().getWidth()/2, getWorld().getHeight()/2);
             Greenfoot.stop();
-
-      
-        
+        }
         
         if(Greenfoot.isKeyDown("down"))
         {
@@ -78,21 +83,7 @@ public class Player extends Actor
             getWorld().removeObject(this);
         }
     }
-    
-    
-    public Player()
-    {
-        for(int i = 0; i < idleUp.length; i++)
-        {
-            idleUp[i] = new GreenfootImage("images/player_idle/idle" + i + ".png");
-            idleDown[i] = new GreenfootImage("images/player_idle/idle" + i + ".png");
-            idleUp[i].scale(55, 55);
-            idleDown[i].scale(55, 55);
-            
-            idleUp[i].mirrorHorizontally();
-        }
-        setImage(idleDown[0]);
-    }
+
     
     //animating the player.
     
@@ -146,4 +137,4 @@ public class Player extends Actor
             moveSpeed += 2;
         }
     }
-}
+    }
